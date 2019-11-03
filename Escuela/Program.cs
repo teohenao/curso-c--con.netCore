@@ -30,6 +30,19 @@ namespace Etapa1
             WriteLine($"Alumno: {ob.UniqueId}");
             WriteLine($"Alumno: {ob.GetType()}");
 
+            var evaluacion = new Evaluacion() { Nombre = "Evaluacion de matematicas", Nota = 4.5f };
+            Printer.dibujarTitulo("Objeto evaluacion");
+            WriteLine($"Alumno: {evaluacion.Nombre}");
+            WriteLine($"Alumno: {evaluacion.UniqueId}");
+            WriteLine($"Nota : {evaluacion.Nota}");
+            WriteLine($"Alumno: {evaluacion.GetType()}");
+
+            ob = evaluacion;
+            Printer.dibujarTitulo("Objeto-evaluacion");
+            WriteLine($"Nombre: {ob.Nombre}");
+            WriteLine($"Id: {ob.UniqueId}");
+            WriteLine($"Alumno: {evaluacion.GetType()}");
+
 
         }
         private static void ImprimirCursosEscuela(Escuela escuela)
