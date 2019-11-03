@@ -16,15 +16,15 @@ namespace Etapa1
             engine.Inicializar();
             Printer.dibujarTitulo("Bienvenidos a la escuela");
             ImprimirCursosEscuela(engine.Escuela);
-            var listaObjetos = engine.GetObjetoEscuelaBases();
+            //la variable dummy sirve para trabajar si quiero o no resultados de los out como parametros de salida
+            int dummy = 0;
+            var listaObjetos = engine.GetObjetoEscuelaBases(
+                out int conteoEvaluaciones,
+                out int conteoAlumnos,
+                out dummy,
+                out int conteoCursos
+                );
 
-            //Consulta para traer los objetos de un tipo, en este caso de tipo interface que se le dio, trae
-            //los que implementan esa interfaz
-            var listaILugar = from obj in listaObjetos
-                              where obj is ILugar
-                              select (ILugar) obj;
-
-            //engine.Escuela.limpiarLugar();
         }
         private static void ImprimirCursosEscuela(Escuela escuela)
         {
