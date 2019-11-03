@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/mateo/Documentos/Platzi/C# con .net Core/Escuela/Escuela.csproj": {}
+  },
+  "projects": {
+    "/home/mateo/Documentos/Platzi/C# con .net Core/Escuela/Escuela.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/mateo/Documentos/Platzi/C# con .net Core/Escuela/Escuela.csproj",
+        "projectName": "Escuela",
+        "projectPath": "/home/mateo/Documentos/Platzi/C# con .net Core/Escuela/Escuela.csproj",
+        "packagesPath": "/home/mateo/.nuget/packages/",
+        "outputPath": "/home/mateo/Documentos/Platzi/C# con .net Core/Escuela/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/mateo/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
