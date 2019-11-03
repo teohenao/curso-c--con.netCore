@@ -41,7 +41,7 @@ namespace CoreEscuela.Entidades
             {
                 curso.limpiarLugar();
             }
-            Console.Write(Nombre + " limpio");
+            Printer.dibujarTitulo($"{Nombre} limpio");
         }
     }
 }

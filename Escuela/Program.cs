@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CoreEscuela;
 using CoreEscuela.Entidades;
 using School.Util;
@@ -16,6 +17,14 @@ namespace Etapa1
             Printer.dibujarTitulo("Bienvenidos a la escuela");
             ImprimirCursosEscuela(engine.Escuela);
             var listaObjetos = engine.GetObjetoEscuelaBases();
+
+            //Consulta para traer los objetos de un tipo, en este caso de tipo interface que se le dio, trae
+            //los que implementan esa interfaz
+            var listaILugar = from obj in listaObjetos
+                              where obj is ILugar
+                              select (ILugar) obj;
+
+            //engine.Escuela.limpiarLugar();
         }
         private static void ImprimirCursosEscuela(Escuela escuela)
         {
