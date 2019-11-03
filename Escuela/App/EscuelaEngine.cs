@@ -25,6 +25,57 @@ namespace CoreEscuela
             cargarAsignaturas();
             cargarEvaluaciones();
         }
+        //SobreCarga de metodos, para que no nos brinde ninguna salida
+        public List<ObjetoEscuelaBase> GetObjetoEscuelaBases(
+         bool traeEvaluaciones = true,
+         bool traeAlumnos = true,
+         bool traeAsignaturas = true,
+         bool traeCursos = true
+         )
+        {
+            return GetObjetoEscuelaBases(
+                out int dummy, out dummy, out dummy, out dummy
+            );
+        }
+        //sobrecarga de metodos para un parametro de salida
+        public List<ObjetoEscuelaBase> GetObjetoEscuelaBases(
+            out int conteoEvaluaciones,
+            bool traeEvaluaciones = true,
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool traeCursos = true
+      )
+        {
+            return GetObjetoEscuelaBases(
+                out conteoEvaluaciones, out int dummy, out dummy, out dummy
+            );
+        }
+         //sobrecarga de metodos para dos parametros de salida
+        public List<ObjetoEscuelaBase> GetObjetoEscuelaBases(
+            out int conteoEvaluaciones,out int conteoCursos,
+            bool traeEvaluaciones = true,
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool traeCursos = true
+      )
+        {
+            return GetObjetoEscuelaBases(
+                out conteoEvaluaciones, out conteoCursos, out int dummy, out dummy
+            );
+        }
+        //sobrecarga de metodos para tres parametros de salida
+        public List<ObjetoEscuelaBase> GetObjetoEscuelaBases(
+            out int conteoEvaluaciones,out int conteoCursos,out int conteoAsignaturas,
+            bool traeEvaluaciones = true,
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool traeCursos = true
+      )
+        {
+            return GetObjetoEscuelaBases(
+                out conteoEvaluaciones, out conteoCursos, out conteoAsignaturas, out int dummy
+            );
+        }
         //metodo que obtiene una lista de todos los objetos 
         //recordar siempre los parametros opcionales deben estar de ultimos, no acepta los obligatoriosd se ultimo
         public List<ObjetoEscuelaBase> GetObjetoEscuelaBases(

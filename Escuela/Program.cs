@@ -18,12 +18,7 @@ namespace Etapa1
             ImprimirCursosEscuela(engine.Escuela);
             //la variable dummy sirve para trabajar si quiero o no resultados de los out como parametros de salida
             int dummy = 0;
-            var listaObjetos = engine.GetObjetoEscuelaBases(
-                out int conteoEvaluaciones,
-                out int conteoAlumnos,
-                out dummy,
-                out int conteoCursos
-                );
+            var listaObjetos = engine.GetObjetoEscuelaBases(());
 
         }
         private static void ImprimirCursosEscuela(Escuela escuela)
