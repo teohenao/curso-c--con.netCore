@@ -37,11 +37,26 @@ namespace Etapa1
             WriteLine($"Nota : {evaluacion.Nota}");
             WriteLine($"Alumno: {evaluacion.GetType()}");
 
-            ob = evaluacion;
+            ob = alumnoTest;
             Printer.dibujarTitulo("Objeto-evaluacion");
             WriteLine($"Nombre: {ob.Nombre}");
             WriteLine($"Id: {ob.UniqueId}");
             WriteLine($"Alumno: {evaluacion.GetType()}");
+
+            /**is = si:pregunta si un tipo de objeto es de otro tipo determinado
+               as = tome este objeto como si fuera este objeto */
+
+            //Verifica "si" es de tipo
+            if(ob is Alumno)
+            {
+                Alumno alumnoRecuperado = (Alumno) ob;
+            }
+            //verifica, si objeto transformado en alumno se puede, nos devuelve ob como alumno, si no -null-
+            Alumno alumnoRecuperado2 = ob as Alumno;
+            if(alumnoTest != null)
+            {
+
+            }
 
 
         }
