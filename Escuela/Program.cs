@@ -15,19 +15,35 @@ namespace Etapa1
             engine.Inicializar();
             Printer.dibujarTitulo("Bienvenidos a la escuela");
             ImprimirCursosEscuela(engine.Escuela);
+
+            Printer.dibujarLinea(20);
+            Printer.dibujarTitulo("Pruebas de polimorfirmo");
+
+            var alumnoTest = new Alumno { Nombre = "alumno test" };
+            WriteLine($"Alumno: {alumnoTest.Nombre}");
+            WriteLine($"Alumno: {alumnoTest.UniqueId}");
+            WriteLine($"Alumno: {alumnoTest.GetType()}");
+
+            ObjetoEscuelaBase ob = alumnoTest;
+            Printer.dibujarTitulo("Objeto escuela-alumno");
+            WriteLine($"Alumno: {ob.Nombre}");
+            WriteLine($"Alumno: {ob.UniqueId}");
+            WriteLine($"Alumno: {ob.GetType()}");
+
+
         }
         private static void ImprimirCursosEscuela(Escuela escuela)
         {
             Printer.dibujarLinea(20);
             Printer.dibujarTitulo("cursos de la escuela");
             Printer.dibujarLinea(20);
-            if(escuela?.Cursos==null)
-            return;
+            if (escuela?.Cursos == null)
+                return;
             else
             {
-                 foreach (var curso in escuela.Cursos)
+                foreach (var curso in escuela.Cursos)
                 {
-                 WriteLine($"nombre: {curso.Nombre}, id: {curso.UniqueId}");
+                    WriteLine($"nombre: {curso.Nombre}, id: {curso.UniqueId}");
                 }
             }
         }
