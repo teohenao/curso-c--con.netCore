@@ -15,50 +15,7 @@ namespace Etapa1
             engine.Inicializar();
             Printer.dibujarTitulo("Bienvenidos a la escuela");
             ImprimirCursosEscuela(engine.Escuela);
-
-            Printer.dibujarLinea(20);
-            Printer.dibujarTitulo("Pruebas de polimorfirmo");
-
-            var alumnoTest = new Alumno { Nombre = "alumno test" };
-            WriteLine($"Alumno: {alumnoTest.Nombre}");
-            WriteLine($"Alumno: {alumnoTest.UniqueId}");
-            WriteLine($"Alumno: {alumnoTest.GetType()}");
-
-            ObjetoEscuelaBase ob = alumnoTest;
-            Printer.dibujarTitulo("Objeto escuela-alumno");
-            WriteLine($"Alumno: {ob.Nombre}");
-            WriteLine($"Alumno: {ob.UniqueId}");
-            WriteLine($"Alumno: {ob.GetType()}");
-
-            var evaluacion = new Evaluacion() { Nombre = "Evaluacion de matematicas", Nota = 4.5f };
-            Printer.dibujarTitulo("Objeto evaluacion");
-            WriteLine($"Alumno: {evaluacion.Nombre}");
-            WriteLine($"Alumno: {evaluacion.UniqueId}");
-            WriteLine($"Nota : {evaluacion.Nota}");
-            WriteLine($"Alumno: {evaluacion.GetType()}");
-
-            ob = alumnoTest;
-            Printer.dibujarTitulo("Objeto-evaluacion");
-            WriteLine($"Nombre: {ob.Nombre}");
-            WriteLine($"Id: {ob.UniqueId}");
-            WriteLine($"Alumno: {evaluacion.GetType()}");
-
-            /**is = si:pregunta si un tipo de objeto es de otro tipo determinado
-               as = tome este objeto como si fuera este objeto */
-
-            //Verifica "si" es de tipo
-            if(ob is Alumno)
-            {
-                Alumno alumnoRecuperado = (Alumno) ob;
-            }
-            //verifica, si objeto transformado en alumno se puede, nos devuelve ob como alumno, si no -null-
-            Alumno alumnoRecuperado2 = ob as Alumno;
-            if(alumnoTest != null)
-            {
-
-            }
-
-
+            var listaObjetos = engine.GetObjetoEscuelaBases();
         }
         private static void ImprimirCursosEscuela(Escuela escuela)
         {

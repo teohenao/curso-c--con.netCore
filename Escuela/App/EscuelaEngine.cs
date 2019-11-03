@@ -97,5 +97,26 @@ namespace CoreEscuela
                 curso.Alumnos = generarAlumnos(cantidadRandom);
             }
         }
+
+        //metodo que obtiene una lista de todos los objetos 
+        public List<ObjetoEscuelaBase> GetObjetoEscuelaBases()
+        {
+            var listaObj = new List<ObjetoEscuelaBase>();
+            listaObj.Add(Escuela);
+            //por ser una lista
+            listaObj.AddRange(Escuela.Cursos);
+
+            foreach (var curso in Escuela.Cursos)
+            {
+                listaObj.AddRange(curso.Asignaturas);
+                listaObj.AddRange(curso.Alumnos);
+                foreach (var alumno in curso.Alumnos)
+                {
+                    listaObj.AddRange(alumno.Evaluaciones);
+                }
+            }
+            return listaObj;
+        }
+
     }
 }
