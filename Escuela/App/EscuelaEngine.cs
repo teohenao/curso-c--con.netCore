@@ -27,14 +27,25 @@ namespace CoreEscuela.Entidades
             cargarAsignaturas();
             cargarEvaluaciones();
         }
-        public void ImprimirDiccionario(Dictionary<LlavesDiccionario,IEnumerable<ObjetoEscuelaBase>> dic)
+        public void ImprimirDiccionario(Dictionary<LlavesDiccionario,IEnumerable<ObjetoEscuelaBase>> dic
+                        ,bool imprEval = false)
         {
             foreach (var obj in dic)
             {
                 Printer.dibujarTitulo(obj.Key.ToString());
                 foreach (var val in obj.Value)
                 {
-                    Console.WriteLine(val);
+                    if(val is Evaluacion){
+                        if(imprEval){
+                            Console.WriteLine(val);
+                        }
+                    }else if(val is Alumno){
+                        Console.WriteLine("alumno: "+val);
+                    }else if(val is Escuela){
+                        Console.Write("Escuela: "+val);
+                    }else{
+                        Console.WriteLine(val);
+                    }
                 }
             }
         }

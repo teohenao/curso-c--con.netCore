@@ -33,6 +33,7 @@ namespace Etapa1
             var dic = new Dictionary<string, string>();
 
             var dicTemp = engine.GetDiccionarioObjetos();
+            engine.ImprimirDiccionario(dicTemp);
 
         }
        
