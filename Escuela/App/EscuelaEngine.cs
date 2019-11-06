@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CoreEscuela.Entidades;
 using Escuela.Entidades;
+using School.Util;
 
 namespace CoreEscuela.Entidades
 {
@@ -25,6 +26,17 @@ namespace CoreEscuela.Entidades
             cargarCursos();
             cargarAsignaturas();
             cargarEvaluaciones();
+        }
+        public void ImprimirDiccionario(Dictionary<LlavesDiccionario,IEnumerable<ObjetoEscuelaBase>> dic)
+        {
+            foreach (var obj in dic)
+            {
+                Printer.dibujarTitulo(obj.Key.ToString());
+                foreach (var val in obj.Value)
+                {
+                    Console.WriteLine(val);
+                }
+            }
         }
 
         public Dictionary<LlavesDiccionario, IEnumerable<ObjetoEscuelaBase>> GetDiccionarioObjetos()
