@@ -26,7 +26,7 @@ namespace CoreEscuela
             cargarEvaluaciones();
         }
         //SobreCarga de metodos, para que no nos brinde ninguna salida
-        public List<ObjetoEscuelaBase> GetObjetoEscuelaBases(
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelaBases(
          bool traeEvaluaciones = true,
          bool traeAlumnos = true,
          bool traeAsignaturas = true,
@@ -38,7 +38,7 @@ namespace CoreEscuela
             );
         }
         //sobrecarga de metodos para un parametro de salida
-        public List<ObjetoEscuelaBase> GetObjetoEscuelaBases(
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelaBases(
             out int conteoEvaluaciones,
             bool traeEvaluaciones = true,
             bool traeAlumnos = true,
@@ -51,7 +51,7 @@ namespace CoreEscuela
             );
         }
          //sobrecarga de metodos para dos parametros de salida
-        public List<ObjetoEscuelaBase> GetObjetoEscuelaBases(
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelaBases(
             out int conteoEvaluaciones,out int conteoCursos,
             bool traeEvaluaciones = true,
             bool traeAlumnos = true,
@@ -64,7 +64,7 @@ namespace CoreEscuela
             );
         }
         //sobrecarga de metodos para tres parametros de salida
-        public List<ObjetoEscuelaBase> GetObjetoEscuelaBases(
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelaBases(
             out int conteoEvaluaciones,out int conteoCursos,out int conteoAsignaturas,
             bool traeEvaluaciones = true,
             bool traeAlumnos = true,
@@ -76,9 +76,9 @@ namespace CoreEscuela
                 out conteoEvaluaciones, out conteoCursos, out conteoAsignaturas, out int dummy
             );
         }
-        //metodo que obtiene una lista de todos los objetos 
+        //metodo que obtiene una lista de todos los objetos "IReadOnlyList para que sea una lista de solo lectura"
         //recordar siempre los parametros opcionales deben estar de ultimos, no acepta los obligatoriosd se ultimo
-        public List<ObjetoEscuelaBase> GetObjetoEscuelaBases(
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelaBases(
             out int conteoEvaluaciones,
             out int conteoAlumnos,
             out int conteoAsignaturas,
@@ -120,7 +120,7 @@ namespace CoreEscuela
                 }
             }
             //return (listaObj,conteoEvaluaciones);
-            return listaObj;
+            return listaObj.AsReadOnly();
         }
 
 
@@ -197,5 +197,7 @@ namespace CoreEscuela
             }
         }
         #endregion
+
     }
 }
+
