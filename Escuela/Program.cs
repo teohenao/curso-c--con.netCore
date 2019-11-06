@@ -12,6 +12,16 @@ namespace Etapa1
     {
         static void Main(string[] args)
         {
+            /******EVENTOOOSSS*/
+            //AppDomain es de .netcore y es donde se ejecutan las aplicaciones en un momento determinado
+            //current domain es donde se esta ejecutando la aplicacion
+            //este evento es lo que pasa cuando la aplicacion esta finalizando
+            AppDomain.CurrentDomain.ProcessExit += accionDelMetodo;
+            //se puede tener dos eventos para un caso y se acumulan
+            //la expresion lamda recibe cualquiercosa por parametros, pero el los pide dependiendo el metodo
+            AppDomain.CurrentDomain.ProcessExit += (s,h)=>Console.WriteLine("evento2 saliendo");
+            //se pueden tener la candidad de delegados que uno quiera como eventos, asi se puede quitar la accion, y nunca la realiza
+            AppDomain.CurrentDomain.ProcessExit -= accionDelMetodo;
             var engine = new EscuelaEngine();
             engine.Inicializar();
             Printer.dibujarTitulo("Bienvenidos a la escuela");
@@ -36,7 +46,13 @@ namespace Etapa1
             engine.ImprimirDiccionario(dicTemp);
 
         }
-       
+
+        private static void accionDelMetodo(object sender, EventArgs e)
+        {
+            Printer.dibujarTitulo("Saliendo");
+            Console.WriteLine("beeeppp");
+            Printer.dibujarTitulo("Salio");
+        }
 
         private static bool predicado(Curso c)
         {
