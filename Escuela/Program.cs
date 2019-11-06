@@ -15,7 +15,6 @@ namespace Etapa1
             var engine = new EscuelaEngine();
             engine.Inicializar();
             Printer.dibujarTitulo("Bienvenidos a la escuela");
-            ImprimirCursosEscuela(engine.Escuela);
             //En el diccionario las llaves son unicas
             Dictionary<int,string> diccionario = new Dictionary<int, string>();
             diccionario.Add(10,"JuanK");
@@ -33,22 +32,10 @@ namespace Etapa1
             Printer.dibujarTitulo("Otro Diccionario");
             var dic = new Dictionary<string, string>();
 
+            var dicTemp = engine.GetDiccionarioObjetos();
+
         }
-        private static void ImprimirCursosEscuela(Escuela escuela)
-        {
-            Printer.dibujarLinea(20);
-            Printer.dibujarTitulo("cursos de la escuela");
-            Printer.dibujarLinea(20);
-            if (escuela?.Cursos == null)
-                return;
-            else
-            {
-                foreach (var curso in escuela.Cursos)
-                {
-                    WriteLine($"nombre: {curso.Nombre}, id: {curso.UniqueId}");
-                }
-            }
-        }
+       
 
         private static bool predicado(Curso c)
         {

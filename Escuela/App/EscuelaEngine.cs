@@ -27,13 +27,30 @@ namespace CoreEscuela.Entidades
             cargarEvaluaciones();
         }
 
-        public Dictionary<LlavesDiccionario,IEnumerable<ObjetoEscuelaBase>> GetDiccionarioObjetos()
+        public Dictionary<LlavesDiccionario, IEnumerable<ObjetoEscuelaBase>> GetDiccionarioObjetos()
         {
             //constantes son valores fijos dentro del programa
             var diccionario = new Dictionary<LlavesDiccionario, IEnumerable<ObjetoEscuelaBase>>();
 
-            diccionario.Add(LlavesDiccionario.Escuela, new[] {Escuela});
-            diccionario.Add(LlavesDiccionario.Curso,Escuela.Cursos.Cast<ObjetoEscuelaBase>());
+            diccionario.Add(LlavesDiccionario.Escuela, new[] { Escuela });
+            diccionario.Add(LlavesDiccionario.Curso, Escuela.Cursos.Cast<ObjetoEscuelaBase>());
+            //esta lista de evaluaciones toca hacerlo asi por que se estaba repitiendo la llave en el siguiente for
+            var listTempEv = new List<Evaluacion>();
+            var listTempAs = new List<Asignatura>();
+            var listTempAl = new List<Alumno>();
+            foreach (var curso in Escuela.Cursos)
+            {
+                listTempAl.AddRange(curso.Alumnos);
+
+                foreach (var alumno in curso.Alumnos)
+                {
+                    listTempEv.AddRange(alumno.Evaluaciones);
+                }
+                listTempAs.AddRange(curso.Asignaturas);
+            }
+            diccionario.Add(LlavesDiccionario.Asignatura, listTempAs.Cast<ObjetoEscuelaBase>());
+            diccionario.Add(LlavesDiccionario.Alumno, listTempAl.Cast<ObjetoEscuelaBase>());
+            diccionario.Add(LlavesDiccionario.Evaluacion, listTempEv.Cast<ObjetoEscuelaBase>());
             return diccionario;
         }
 
@@ -63,9 +80,9 @@ namespace CoreEscuela.Entidades
                 out conteoEvaluaciones, out int dummy, out dummy, out dummy
             );
         }
-         //sobrecarga de metodos para dos parametros de salida
+        //sobrecarga de metodos para dos parametros de salida
         public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelaBases(
-            out int conteoEvaluaciones,out int conteoCursos,
+            out int conteoEvaluaciones, out int conteoCursos,
             bool traeEvaluaciones = true,
             bool traeAlumnos = true,
             bool traeAsignaturas = true,
@@ -78,7 +95,7 @@ namespace CoreEscuela.Entidades
         }
         //sobrecarga de metodos para tres parametros de salida
         public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelaBases(
-            out int conteoEvaluaciones,out int conteoCursos,out int conteoAsignaturas,
+            out int conteoEvaluaciones, out int conteoCursos, out int conteoAsignaturas,
             bool traeEvaluaciones = true,
             bool traeAlumnos = true,
             bool traeAsignaturas = true,
