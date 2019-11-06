@@ -45,6 +45,9 @@ namespace Etapa1
             var dicTemp = engine.GetDiccionarioObjetos();
             engine.ImprimirDiccionario(dicTemp);
 
+            var repor = new Reporteador(engine.GetDiccionarioObjetos());
+            
+
         }
 
         private static void accionDelMetodo(object sender, EventArgs e)
