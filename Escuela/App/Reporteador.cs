@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using CoreEscuela.Entidades;
 using Escuela.Entidades;
@@ -20,9 +21,15 @@ namespace CoreEscuela.Entidades
         }
 
         //para exponer una lista, es buena practica brindarla en un Ienumerable o en una lista de solo lectura
-        public IEnumerable<Evaluacion> getListaEvaluaciones()
+        public IEnumerable<Escuela> getListaEvaluaciones()
         {
-            _diccionario[LlavesDiccionario.Evaluacion]
+            IEnumerable<Escuela> rta;
+            if(_diccionario.TryGetValue(LlavesDiccionario.Escuela, out IEnumerable<ObjetoEscuelaBase>lista))
+                rta = lista.Cast<Escuela>();
+            else
+                rta = null;
+           return rta;
+
         }
     }
 }

@@ -67,7 +67,7 @@ namespace CoreEscuela.Entidades
             //constantes son valores fijos dentro del programa
             var diccionario = new Dictionary<LlavesDiccionario, IEnumerable<ObjetoEscuelaBase>>();
 
-            diccionario.Add(LlavesDiccionario.Escuela, new[] { Escuela });
+            diccionario.Add(LlavesDiccionario.Escuela, new[] {Escuela});
             diccionario.Add(LlavesDiccionario.Curso, Escuela.Cursos.Cast<ObjetoEscuelaBase>());
             //esta lista de evaluaciones toca hacerlo asi por que se estaba repitiendo la llave en el siguiente for
             var listTempEv = new List<Evaluacion>();
