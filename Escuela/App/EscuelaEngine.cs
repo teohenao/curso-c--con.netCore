@@ -3,8 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using CoreEscuela.Entidades;
+using Escuela.Entidades;
 
-namespace CoreEscuela
+namespace CoreEscuela.Entidades
 {
     /** Selead permite crear instancias de esa clase, pero no heredarla "Sellada" */
     public sealed class EscuelaEngine
@@ -26,11 +27,13 @@ namespace CoreEscuela
             cargarEvaluaciones();
         }
 
-        public Dictionary<string,IEnumerable<ObjetoEscuelaBase>> GetDiccionarioObjetos()
+        public Dictionary<LlavesDiccionario,IEnumerable<ObjetoEscuelaBase>> GetDiccionarioObjetos()
         {
-            var diccionario = new Dictionary<string, IEnumerable<ObjetoEscuelaBase>>();
-            diccionario.Add("Escuela",new[] {Escuela});
-            diccionario.Add("Cursos",Escuela.Cursos.Cast<ObjetoEscuelaBase>());
+            //constantes son valores fijos dentro del programa
+            var diccionario = new Dictionary<LlavesDiccionario, IEnumerable<ObjetoEscuelaBase>>();
+
+            diccionario.Add(LlavesDiccionario.Escuela, new[] {Escuela});
+            diccionario.Add(LlavesDiccionario.Curso,Escuela.Cursos.Cast<ObjetoEscuelaBase>());
             return diccionario;
         }
 
