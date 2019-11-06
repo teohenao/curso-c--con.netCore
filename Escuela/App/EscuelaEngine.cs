@@ -25,6 +25,9 @@ namespace CoreEscuela
             cargarAsignaturas();
             cargarEvaluaciones();
         }
+      
+
+
         //SobreCarga de metodos, para que no nos brinde ninguna salida
         public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelaBases(
          bool traeEvaluaciones = true,

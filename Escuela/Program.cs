@@ -16,12 +16,22 @@ namespace Etapa1
             engine.Inicializar();
             Printer.dibujarTitulo("Bienvenidos a la escuela");
             ImprimirCursosEscuela(engine.Escuela);
-            //la variable dummy sirve para trabajar si quiero o no resultados de los out como parametros de salida
-            var listaObjetos = engine.GetObjetoEscuelaBases(
-                out int conteoEvaluaciones,
-                out int conteoAlumnos,
-                out int conteoCursos
-                );
+            //En el diccionario las llaves son unicas
+            Dictionary<int,string> diccionario = new Dictionary<int, string>();
+            diccionario.Add(10,"JuanK");
+            diccionario.Add(23,"Lorem Psum");
+
+            foreach (var keyVailPair in diccionario)
+            {
+                Console.WriteLine("LLave es : "+keyVailPair.Key+ " valor : "+keyVailPair.Value);
+            }
+
+            Printer.dibujarTitulo("Acceso a diccionario");
+            diccionario[0] = "prueba 0";
+            Console.WriteLine(diccionario[23]);
+
+            Printer.dibujarTitulo("Otro Diccionario");
+            var dic = new Dictionary<string, string>();
 
         }
         private static void ImprimirCursosEscuela(Escuela escuela)
