@@ -67,10 +67,12 @@ namespace CoreEscuela.Entidades
             foreach (var asigConEval in dicEvalXAsign)
             {
                 var dummy = from  eval  in asigConEval.Value
+                            group eval by 
+                                eval.Alumno.UniqueId
+                            into grupoEvalAlumn    
                             select new {
-                                eval.Alumno.UniqueId,
-                                nombreAlumno = eval.Alumno.Nombre,
-                                eval.Nota
+                                alumnoId = grupoEvalAlumn.Key,
+                                promedio = grupoEvalAlumn.Average(evaluacion => evaluacion.Nota);
                             };
             }
             

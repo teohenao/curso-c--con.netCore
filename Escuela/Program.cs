@@ -49,6 +49,7 @@ namespace Etapa1
             var evaList = repor.getListaEvaluaciones();
             var asigList = repor.GetListaAsignaturas();
             var listaEvaluacionesXAsing = repor.GetDicEvaluXAsign();
+            var listaPromXasign = repor.getPromedioAlumnAsignatura();
             
 
         }
