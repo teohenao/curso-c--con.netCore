@@ -48,6 +48,7 @@ namespace Etapa1
             var repor = new Reporteador(engine.GetDiccionarioObjetos());
             var evaList = repor.getListaEvaluaciones();
             var asigList = repor.GetListaAsignaturas();
+            var listaEvaluacionesXAsing = repor.GetDicEvaluXAsign();
             
 
         }

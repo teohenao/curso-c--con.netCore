@@ -29,10 +29,14 @@ namespace CoreEscuela.Entidades
             else
                  return new List<Evaluacion>();
         }
-
+        //Sobrecarga del metodo getListaAsignaturas
         public IEnumerable<String> GetListaAsignaturas()
         {
-            var listaEvaluaciones = getListaEvaluaciones();
+            return GetListaAsignaturas(out var dummy);
+        }
+        public IEnumerable<String> GetListaAsignaturas(out IEnumerable<Evaluacion> listaEvaluaciones)
+        {
+            listaEvaluaciones = getListaEvaluaciones();
 
             return (from Evaluacion ev in listaEvaluaciones 
                     //where ev.Nota >= 3.0f
@@ -42,6 +46,15 @@ namespace CoreEscuela.Entidades
         public Dictionary<string,IEnumerable<Evaluacion>> GetDicEvaluXAsign()
         {
             var diccionario = new Dictionary<string, IEnumerable<Evaluacion>>();
+            var listaAsignaturas = GetListaAsignaturas(out var listaEvaluaciones);
+
+            foreach (var asignatura in listaAsignaturas)
+            {
+                var evalsAsign = from ev in listaEvaluaciones
+                                 where ev.Asignatura.Nombre == asignatura 
+                                 select ev;
+                diccionario.Add(asignatura,evalsAsign);
+            }
 
             return diccionario;
         }
