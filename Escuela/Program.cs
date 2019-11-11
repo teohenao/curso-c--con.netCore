@@ -46,6 +46,8 @@ namespace Etapa1
             engine.ImprimirDiccionario(dicTemp);
 
             var repor = new Reporteador(engine.GetDiccionarioObjetos());
+            var evaList = repor.getListaEvaluaciones();
+            var asigList = repor.GetListaAsignaturas();
             
 
         }

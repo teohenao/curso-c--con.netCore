@@ -21,15 +21,31 @@ namespace CoreEscuela.Entidades
         }
 
         //para exponer una lista, es buena practica brindarla en un Ienumerable o en una lista de solo lectura
-        public IEnumerable<Escuela> getListaEvaluaciones()
+        public IEnumerable<Evaluacion> getListaEvaluaciones()
         {
-            IEnumerable<Escuela> rta;
-            if(_diccionario.TryGetValue(LlavesDiccionario.Escuela, out IEnumerable<ObjetoEscuelaBase>lista))
-                rta = lista.Cast<Escuela>();
+            //TryGetVlaue "intenta traerlo y arroja un bool y nos devuelve un parametro de salida en donde se guardara lo que trae"
+            if(_diccionario.TryGetValue(LlavesDiccionario.Evaluacion, out IEnumerable<ObjetoEscuelaBase>lista))
+                 return lista.Cast<Evaluacion>();
             else
-                rta = null;
-           return rta;
-
+                 return new List<Evaluacion>();
         }
+
+        public IEnumerable<String> GetListaAsignaturas()
+        {
+            var listaEvaluaciones = getListaEvaluaciones();
+
+            return (from Evaluacion ev in listaEvaluaciones 
+                    //where ev.Nota >= 3.0f
+                    select ev.Asignatura.Nombre).Distinct();
+        }
+
+        public Dictionary<string,IEnumerable<Evaluacion>> GetDicEvaluXAsign()
+        {
+            var diccionario = new Dictionary<string, IEnumerable<Evaluacion>>();
+
+            return diccionario;
+        }
+
+
     }
 }
